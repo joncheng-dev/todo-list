@@ -1,6 +1,9 @@
 import React from "react";
 
 function App() {
+  // Declare useState hook -- with variable and function to change it
+  const [toDoList, setToDoList] = useState([]);
+
   return (
     <React.Fragment>
       <div className="App">
