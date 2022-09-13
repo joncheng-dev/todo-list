@@ -3,7 +3,6 @@ import { useState } from "react";
 import { v4 } from "uuid";
 
 function App() {
-  // Declare useState hook -- with variable and function to change it
   const [toDoList, setToDoList] = useState([]);
   const [newTask, setNewTask] = useState("");
 
@@ -16,15 +15,11 @@ function App() {
       id: v4(),
       taskName: newTask,
     };
-    const newToDoList = [...toDoList, task];
-    setToDoList(newToDoList);
+    setToDoList([...toDoList, task]);
   };
 
-  const deleteTask = (taskName) => {
-    const newToDoList = toDoList.filter((task) => {
-      return task === taskName ? false : true;
-    });
-    setToDoList(newToDoList);
+  const deleteTask = (id) => {
+    setToDoList(toDoList.filter((task) => task.id !== id));
   };
 
   return (
@@ -39,13 +34,7 @@ function App() {
             return (
               <div>
                 <h3>{task.taskName}</h3>
-                <button
-                  onClick={() => {
-                    deleteTask(task);
-                  }}
-                >
-                  X
-                </button>
+                <button onClick={() => deleteTask(task.id)}>X</button>
               </div>
             );
           })}
