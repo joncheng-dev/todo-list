@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { v4 } from "uuid";
+import NewTaskCard from "./NewTaskCard";
 
 function App() {
   const [toDoList, setToDoList] = useState([]);
@@ -31,12 +32,7 @@ function App() {
         </div>
         <div className="listTasks">
           {toDoList.map((task) => {
-            return (
-              <div>
-                <h3>{task.taskName}</h3>
-                <button onClick={() => deleteTask(task.id)}>X</button>
-              </div>
-            );
+            return <NewTaskCard taskName={task.taskName} id={task.id} deleteTask={deleteTask} />;
           })}
         </div>
       </div>
