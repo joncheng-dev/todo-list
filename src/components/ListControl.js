@@ -16,8 +16,21 @@ function ListControl() {
     const task = {
       id: v4(),
       taskName: newTask,
+      completed: false,
     };
     setToDoList([...toDoList, task]);
+  };
+
+  const completeTask = (id) => {
+    setToDoList(
+      toDoList.map((task) => {
+        if (task.id === id) {
+          return { ...task, completed: true };
+        } else {
+          return task;
+        }
+      })
+    );
   };
 
   const deleteTask = (id) => {
@@ -29,7 +42,7 @@ function ListControl() {
       <InputTask handleChange={handleChange} handleAddingNewTask={handleAddingNewTask} />
       <div className="listTasks">
         {toDoList.map((task) => {
-          return <NewTaskCard taskName={task.taskName} id={task.id} deleteTask={deleteTask} />;
+          return <NewTaskCard taskName={task.taskName} id={task.id} completed={task.completed} completeTask={completeTask} deleteTask={deleteTask} />;
         })}
       </div>
     </React.Fragment>
