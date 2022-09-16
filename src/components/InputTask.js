@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const InputTask = (props) => {
   const { handleChange, handleAddingNewTask } = props;
@@ -11,6 +12,11 @@ const InputTask = (props) => {
       </div>
     </React.Fragment>
   );
+};
+
+InputTask.propTypes = {
+  handleChange: PropTypes.func,
+  handleAddingNewTask: PropTypes.func,
 };
 
 export default InputTask;

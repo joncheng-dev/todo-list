@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const NewTaskCard = (props) => {
   return (
@@ -10,6 +11,13 @@ const NewTaskCard = (props) => {
       </div>
     </React.Fragment>
   );
+};
+
+NewTaskCard.propTypes = {
+  completed: PropTypes.bool,
+  taskName: PropTypes.string,
+  completeTask: PropTypes.func,
+  deleteTask: PropTypes.func,
 };
 
 export default NewTaskCard;
